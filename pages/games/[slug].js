@@ -4,7 +4,7 @@ import { GameInfo } from '../../components/GameComponents/GameInfo';
 import { About } from '../../components/GameComponents/About';
 import { Slider } from '../../components/Slider';
 import Head from 'next/head';
-import { API_URL, KEY_URL } from '../../utils/constants';
+import { API_URL, KEY_URL } from '../../components/Utils/constants';
 
 export default function ({ game, screenshots }) {
   return (

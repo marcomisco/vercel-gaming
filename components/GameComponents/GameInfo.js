@@ -11,29 +11,6 @@ export function GameInfo({ game }) {
 
       <Item title={'Rating'} value={game.metacritic} />
 
-      <Item title={'Genres'} value={game.genres?.map((genre) => genre?.name).join(', ')} />
-
-      <Item title={'Release date'} value={game.released} />
-
-      <Item
-        title={'Developer'}
-        value={game.developers?.map((developer) => developer?.name).join(', ')}
-      />
-
-      <Item
-        title={'Publisher'}
-        value={game.publishers?.map((publisher) => publisher?.name).join(', ')}
-      />
-
-      <Item title={'Age rating'} value={game.esrb_rating?.name} />
-
-      <Item title={'Website'} isBig={true}>
-        {game.website && (
-          <a href={game.website} rel="noopener noreferrer" target="_blank">
-            {game.website}
-          </a>
-        )}
-      </Item>
     </Container>
   );
 }

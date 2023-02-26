@@ -15,7 +15,7 @@ export function Search({ handleChange }) {
       <StyledInput
         value={value}
         type="text"
-        placeholder="search"
+        placeholder="search a game"
         onChange={handleInputChange}
       ></StyledInput>
     </StyledLabel>
@@ -25,7 +25,7 @@ export function Search({ handleChange }) {
 const StyledLabel = styled.label`
   position: relative;
   width: 100%;
-  max-width: 500px;
+  margin-right: 5%;
 
   &::after {
     content: url('${searchIcon.src}');

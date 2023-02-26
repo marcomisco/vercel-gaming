@@ -12,7 +12,6 @@ export function Item({ title, value, isBig, children }) {
 }
 
 const Container = styled.div`
-  ${(props) => (props.isBig ? 'grid-column: 1 / 3;' : '')}
   margin-bottom: 10px;
   padding: 5px;
 `;

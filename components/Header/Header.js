@@ -10,7 +10,7 @@ export function Header({ setFilters }) {
   return (
     <StyledHeader>
       <Link href={'/'}>
-        <Title>RAWG</Title>
+        <Title>VideoGames</Title>
       </Link>
 
       <Search handleChange={handleChange} />

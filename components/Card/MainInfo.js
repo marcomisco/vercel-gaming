@@ -6,10 +6,6 @@ export function MainInfo({ name, rating, metacritic }) {
       <h3>{name}</h3>
 
       <RaitingContainer>
-        <RaitingCard popover={'Rating'}>
-          <b>{rating}</b>
-        </RaitingCard>
-
         <RaitingCard popover={'Metacritic'}>
           <b>{metacritic}</b>
         </RaitingCard>
@@ -23,6 +19,7 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: baseline;
   gap: 5px;
+  padding: 8px;
 `;
 
 const RaitingContainer = styled.div`
@@ -37,9 +34,10 @@ const RaitingCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid green;
+  border: 1px solid rgb(27,40,56);
   border-radius: 0.3rem;
-  color: green;
+  color: white;
+
 
   &:hover::after {
     content: '${(props) => props.popover}';

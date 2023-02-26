@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Header } from '../components/Header/Header';
 import { Pagination } from '../components/Pagination';
-import { debounce } from '../utils/debounce';
+import { debounce } from '../components/Utils/debounce';
 import { Games } from '../components/Games';
 import { Controls } from '../components/Controls/Controls';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { API_URL, initialFilters, KEY_URL } from '../utils/constants';
+import { API_URL, initialFilters, KEY_URL } from '../components/Utils/constants';
 import { Loader } from '../components/Loader';
 import { useRouteLoading } from '../hooks/useRouteLoading';
 

@@ -1,5 +1,5 @@
 import { DropDown } from './DropDown';
-import { sort } from '../../utils/constants';
+import { sort } from '../Utils/constants';
 
 const getOrdering = (value) => {
   return sort.findIndex((item) => item.dataValue === value);

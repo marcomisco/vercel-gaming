@@ -1,4 +1,4 @@
-import { platforms } from '../../utils/constants';
+import { platforms } from '../Utils/constants';
 import { DropDown } from './DropDown';
 
 const getPlatform = (value) => {

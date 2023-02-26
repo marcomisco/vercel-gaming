@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { MainInfo } from './MainInfo';
 import Link from 'next/link';
 import Image from 'next/image';
-import blurImage from '../../assets/placeholder-image.png';
 
-export const Card = ({ game: { name, background_image, rating, released, metacritic, slug } }) => {
+export const Card = ({ game: { name, background_image, rating, platforms, released, metacritic, slug } }) => {
   return (
     <Link href={`/games/${slug}`}>
       <Container>
@@ -14,17 +13,12 @@ export const Card = ({ game: { name, background_image, rating, released, metacri
             alt={name}
             width={500}
             height={250}
-            placeholder="blur"
-            blurDataURL={blurImage.src}
           />
         )}
 
         <StyledDiv>
           <MainInfo name={name} rating={rating} metacritic={metacritic} />
-
-          <StyledP>
-            Release date: <b>{released}</b>
-          </StyledP>
+          <StyledP>{platforms?.map((item) => item?.platform?.name).join(', ')}</StyledP>
         </StyledDiv>
       </Container>
     </Link>
@@ -32,16 +26,16 @@ export const Card = ({ game: { name, background_image, rating, released, metacri
 };
 
 const Container = styled.div`
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 1rem;
-  background-color: #2d2d2d;
-  box-shadow: rgb(0 0 0 / 14%) 5px 5px 5px;
-  overflow: hidden;
-  cursor: pointer;
+max-width: 400px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+border-radius: 1rem;
+background-color: rgba(0, 0, 0, 0.5);
+box-shadow: rgb(0 0 0 / 14%) 5px 5px 5px;
+overflow: hidden;
+cursor: pointer;
 `;
 
 const StyledImage = styled(Image)`
@@ -52,9 +46,10 @@ const StyledImage = styled(Image)`
 
 const StyledDiv = styled.div`
   width: 100%;
-  padding: 0 5px;
+  padding: 2%;
 `;
 
 const StyledP = styled.p`
   color: #d3d3d3;
+  padding: 2%;
 `;

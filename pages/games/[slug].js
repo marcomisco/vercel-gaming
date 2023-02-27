@@ -1,34 +1,30 @@
 import styled from 'styled-components';
 import { BackBtn } from '../../components/BackBtn';
-import { GameInfo } from '../../components/GameComponents/GameInfo';
-import { About } from '../../components/GameComponents/About';
+// import { ReturnBtn } from '../../components/actions/ReturnBtn';
+import { GameInfo } from '../../components/gameComponents/GameInfo';
 import { Slider } from '../../components/Slider';
 import Head from 'next/head';
+// import { API_URL, KEY_URL } from '/.env';
 import { API_URL, KEY_URL } from '../../components/Utils/constants';
 
-export default function ({ game, screenshots }) {
+export default function ({ game, screenshots, background_image }) {
   return (
     <>
       <Head>
         <title>{game.name}</title>
       </Head>
-
+      
       <Container background_image={game.background_image}>
-        <BackBtn />
-
+      {/* <ReturnBtn/> */}
         <GameContainer>
+      
           <h1>{game.name}</h1>
-
-          {screenshots?.results?.length && (
-            <div>
-              <p>{screenshots.results.length} screenshots</p>
-              <Slider images={screenshots.results} />
-            </div>
-          )}
-
-          <About description_raw={game.description_raw} />
-
+      
+          <div>
+            <Slider images={screenshots.results} />
+          </div>
           <GameInfo game={game} />
+          <BackBtn />
         </GameContainer>
       </Container>
     </>
@@ -36,13 +32,15 @@ export default function ({ game, screenshots }) {
 }
 
 const Container = styled.div`
-  min-height: 100vh;
-  padding: 20px;
+  margin: 2%;
+  background-color: rgb(13,20,28);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 16px;
+
 
   &:after {
     position: absolute;
@@ -51,7 +49,6 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('${(props) => props.background_image}');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -61,20 +58,26 @@ const Container = styled.div`
 `;
 
 const GameContainer = styled.div`
-  max-width: 900px;
+  max-width: 800px;
   min-width: 300px;
+ 
+  
 `;
 
+
+
 export async function getStaticProps({ params: { slug } }) {
-  const gameResponse = await fetch(`${API_URL}/${slug}${KEY_URL}`);
-  const game = await gameResponse.json();
-
-  const screenshotsResponse = await fetch(`${API_URL}/${slug}/screenshots${KEY_URL}`);
-  const screenshots = await screenshotsResponse.json();
-
-  return {
-    props: { game, screenshots },
-  };
+  try {
+    const gameResponse = await fetch(`${API_URL}/${slug}${KEY_URL}`);
+    const game = await gameResponse.json();
+    const screenshotsResponse = await fetch(`${API_URL}/${slug}/screenshots${KEY_URL}`);
+    const screenshots = await screenshotsResponse.json();
+    return {
+      props: { game, screenshots },
+    };
+  } catch {
+    console.log('error');
+  }
 }
 
 export async function getStaticPaths() {

@@ -28,7 +28,6 @@ export function DropDown({ list, initialValueIndex, handleChange }) {
   };
 
   const handleKeyDown = (index) => (e) => {
-    console.log('ENTER W', e.key);
     switch (e.key) {
       case ' ':
       case 'SpaceBar':
@@ -62,6 +61,7 @@ export function DropDown({ list, initialValueIndex, handleChange }) {
 
   return (
     <DropDownContainer ref={dropDownRef}>
+  
       <DropDownButton
         type="button"
         aria-haspopup="listbox"
@@ -73,7 +73,9 @@ export function DropDown({ list, initialValueIndex, handleChange }) {
       </DropDownButton>
 
       <DropDownListContainer isOpen={isOpen}>
+     
         <DropDownList role="listbox" aria-activedescendant={list[selectedOption]} tabIndex={-1}>
+     
           {list.map(({ title, dataValue }, idx) => (
             <ListItem
               isDisabled={selectedOption === idx}
@@ -89,7 +91,9 @@ export function DropDown({ list, initialValueIndex, handleChange }) {
             >
               {title}
             </ListItem>
+               
           ))}
+        
         </DropDownList>
       </DropDownListContainer>
     </DropDownContainer>
@@ -97,8 +101,7 @@ export function DropDown({ list, initialValueIndex, handleChange }) {
 }
 
 const DropDownContainer = styled('div')`
-  width: 145px;
-  margin: 0 auto;
+  width: 400px;
   position: relative;
 `;
 
@@ -109,13 +112,13 @@ const DropDownButton = styled('button')`
   padding: 0 10px;
   width: 100%;
   height: 40px;
-  border: none;
-  border-radius: ${({ theme }) => theme.border.radius};
-  background: ${({ theme }) => theme.colors.active};
+  background:rgb(13,20,28);
   color: inherit;
   text-align: left;
   cursor: pointer;
   user-select: none;
+  border: solid white;
+  border-radius: 8px;
 
   &::after {
     content: '';
@@ -133,23 +136,25 @@ const DropDownButton = styled('button')`
 const DropDownListContainer = styled('div')`
   position: absolute;
   top: 0;
-  width: 145px;
+  width: 100%;
   display: ${(props) => (props.isOpen ? 'block' : 'none')};
   user-select: none;
   cursor: pointer;
   z-index: 1;
+  background-color:rgb(27,40,56)
+  border-radius: 8px;
 `;
 
 const DropDownList = styled('ul')`
   padding: 0;
   margin: 0;
-  border-radius: ${({ theme }) => theme.border.radius};
-  color: ${({ theme }) => theme.colors.inverseTextColor};
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  border-radius: #fff;
+  color: rgb(27,40,56);
+  box-shadow: 0 2px 3px grey;
   overflow: hidden;
   animation-name: fadeIn;
   animation-duration: 0.1s;
-
+  background-color:rgb(27,40,56)
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -166,20 +171,20 @@ const ListItem = styled('li')`
   display: flex;
   align-items: center;
   list-style: none;
-
+  color: #fff;
   ${(props) =>
     props.isDisabled
       ? `
-    background: ${props.theme.colors.active};
+    background:rgb(27,40,56) ;
     color: #fff;
   `
       : `
-  background: ${props.theme.colors.inversePrimary};
+  background: rgb(27,40,56);
   `}
 
   &:hover,
   &:active,
   &:focus {
-    background: #666666;
+    background: black;
   }
 `;

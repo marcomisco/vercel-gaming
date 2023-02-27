@@ -22,7 +22,6 @@ export default function Home({ initial }) {
   });
 
   const [games, setGames] = useState(initial);
-  const [isAutoScroll, setIsAutoScroll] = useState(true);
   const isMountRef = useRef(true);
   const isLoading = useRouteLoading();
 
@@ -44,20 +43,21 @@ export default function Home({ initial }) {
 
   return (
     <>
-      <Head>
-        <title>List of Video Games</title>
-      </Head>
+      <div className="container">
+        <Head>
+          <title>List of Video Games</title>
+        </Head>
+        <Header setFilters={debounce(setFilters, 500)} />
+        <Controls filters={filters} setFilters={setFilters} />
 
-      <Header setFilters={debounce(setFilters, 500)} />
-
-      <Controls filters={filters} setFilters={setFilters} setIsAutoScroll={setIsAutoScroll} />
-
-      {isLoading ? (
+{/* initialize loading */}
+        {isLoading ? (
         <Loader />
       ) : (
-        <Games games={games} isAutoScroll={isAutoScroll} setGames={setGames} />
+        <Games games={games} setGames={setGames} />
       )}
 
+      </div>
       <Pagination
         next={games.next}
         previous={games.previous}
@@ -69,6 +69,7 @@ export default function Home({ initial }) {
 }
 
 export async function getServerSideProps({ query: initialQuery }) {
+  try {
   const query = Object.entries(initialQuery).reduce((prev, [key, value]) => {
     return prev + `&${key}=${value}`;
   }, '');
@@ -78,5 +79,8 @@ export async function getServerSideProps({ query: initialQuery }) {
 
   return {
     props: { initial },
-  };
+  };}
+  catch  {
+    console.log('error');
+  }
 }

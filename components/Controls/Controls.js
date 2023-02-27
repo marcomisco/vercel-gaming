@@ -1,17 +1,12 @@
-import { Filter } from './Filter';
 import { Sort } from './Sort';
 import styled from 'styled-components';
-import { AutoScroll } from './AutoScroll';
 
-export function Controls({ filters, setFilters, setIsAutoScroll }) {
+export function Controls({ filters, setFilters }) {
   return (
     <Container>
       <StyledDiv>
         <Sort filters={filters} setFilters={setFilters} />
-        <Filter filters={filters} setFilters={setFilters} />
       </StyledDiv>
-
-      <AutoScroll setIsAutoScroll={setIsAutoScroll} />
     </Container>
   );
 }
@@ -24,14 +19,14 @@ const Container = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+  max-width : 1440px;
+  margin-left: auto;
+  margin-right: auto;
 
-  @media (max-width: 500px) {
-    justify-content: flex-end;
-  }
+
 `;
 
 const StyledDiv = styled.div`
   display: flex;
-  align-items: center;
-  gap: 10px;
+
 `;

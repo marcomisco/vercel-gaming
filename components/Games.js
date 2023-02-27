@@ -1,18 +1,11 @@
 import styled from 'styled-components';
 import { Card } from './Card/Card';
-import { useScrollPagination } from '../hooks/useScrollPagination';
-import { useEffect } from 'react';
 
-export function Games({ games, isAutoScroll, setGames }) {
-  const { gamesList, scrolledGames } = useScrollPagination({ games, isAutoScroll });
-
-  useEffect(() => {
-    const newGames = { ...scrolledGames, results: gamesList };
-    setGames(newGames);
-  }, [gamesList]);
-
+export function Games({ games }) {
   if (!games.results.length) {
-    return <div>No data!</div>;
+    return <Container>
+      <h1>No results found</h1>
+       </Container>
   }
 
   return (
@@ -26,19 +19,21 @@ export function Games({ games, isAutoScroll, setGames }) {
 
 const Container = styled.div`
   display: grid;
+  max-width: 1440px;
   justify-content: center;
-  gap: 10px;
-  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 1%;
+  padding: 1%;
 
-  @media (min-width: 600px) {
+  @media (min-width: 200px) {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(3, 1fr);
+    max-width: 1440px;
+    min-width : 1000px;
   }
 
   @media (min-width: 1300px) {
     grid-template-columns: repeat(4, 1fr);
+    max-width: 1440px;
   }
 `;

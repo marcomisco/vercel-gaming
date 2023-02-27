@@ -1,5 +1,6 @@
 export const API_URL = 'https://api.rawg.io/api/games';
-export const KEY_URL = '?key=2516c1a213f748d4b2f1ef169998a412';
+export const KEY_URL = '?key=9d7f98076c7a4b53a1e370aa01cd991e';
+
 
 export const initialFilters = {
   page: 1,

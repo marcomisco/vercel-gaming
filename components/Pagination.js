@@ -58,7 +58,7 @@ const Arrow = styled.div`
 `;
 
 const StyledButton = styled.button`
-  width: 20px;
+  width: 40px;
   height: 20px;
   padding: 15px;
   border: none;
@@ -90,7 +90,7 @@ const PageItem = styled.div`
   align-items: center;
   justify-content: center;
   padding: 15px;
-  width: 20px;
+  width: 80px;
   height: 20px;
   border: 1px solid grey;
   border-radius: 4px;

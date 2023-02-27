@@ -24,8 +24,8 @@
       "react/display-name": "off",
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
-      "no-unused-vars": "warn"
-      // "comma-dangle": ["error", "only-multiline"]
+      "no-unused-vars": "warn",
+      "comma-dangle": ["error", "only-multiline"]
     },
     "root": true
 }

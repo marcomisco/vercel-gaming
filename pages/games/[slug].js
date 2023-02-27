@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BackBtn } from '../../components/BackBtn';
 // import { ReturnBtn } from '../../components/actions/ReturnBtn';
-import { GameInfo } from '../../components/gameComponents/GameInfo';
+import { GameInfo } from '../../components/GameComponents/GameInfo';
 import { Slider } from '../../components/Slider';
 import Head from 'next/head';
 // import { API_URL, KEY_URL } from '/.env';

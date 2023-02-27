@@ -19,13 +19,13 @@
       "prettier"
     ],
     "rules": {
-      "prettier/prettier": ["error", {}, { "usePrettierrc": true, "endOfLine": "auto" }],
+      "prettier/prettier": ["warn", {}, { "usePrettierrc": false, "endOfLine": "auto" }],
       "react/prop-types": "off",
       "react/display-name": "off",
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
       "no-unused-vars": "warn",
-      // "comma-dangle": ["error", "only-multiline"]
+      "comma-dangle": ["error", "only-multiline"]
     },
     "root": true
 }
